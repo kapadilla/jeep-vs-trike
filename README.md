@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚐 Jeep vs 🛺 Trike
 
-## Getting Started
+A Filipino-themed tic-tac-toe game. Two players take turns as the Jeep or the Trike, and the first to line up three wins the road.
 
-First, run the development server:
+**Live demo:** https://jeep-vs-trike-kim.vercel.app/
+
+![Screenshot of the game](image.png)
+
+## Features
+
+- Two players take turns on a 3x3 board
+- Shows the winner (with the winning line highlighted) or a draw
+- New Game button to start over
+- Scoreboard that counts Jeep wins, Trike wins, and draws
+- Pop animation when a mark is placed
+- Responsive layout
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Deployed on Vercel
+
+## Run Locally
 
 ```bash
+git clone https://github.com/kapadilla/jeep-vs-trike.git
+cd jeep-vs-trike
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/          Next.js app (layout, page, styles, favicon)
+components/   Game (state and logic) and Board (UI)
+lib/game.ts   Win detection and shared constants
+```
 
-## Learn More
+## How I Used AI
 
-To learn more about Next.js, take a look at the following resources:
+- Used Claude to plan the theme and generate the first version of the components (`Game`, `Board`, and the `calculateWinner` helper).
+- I set up the project, ran and tested it myself, and customized the theme, icons, and scoreboard.
+- I fixed a few issues along the way:
+  - Renamed the component files from `.ts` to `.tsx` after TypeScript errors on the JSX.
+  - Fixed the scoreboard text being unreadable by setting an explicit text color.
+  - Swapped the 🚙 SUV emoji for 🚐 since it looks closer to a jeepney.
+- Tested edge cases by hand: winning on the last move, draws, clicking filled squares, clicking after the game ends, all 8 winning lines, and New Game mid-game.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## What I'd Improve With More Time
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Custom jeepney and tricycle SVG art instead of emoji
+- Save the score in local storage
+- Optional play vs computer mode
